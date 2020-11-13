@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Scanner;
-import com.google.gson.Gson;
+import com.google.gson.*;
 // import com.google.gson.JsonSyntaxException;
 
 import org.wethinkcode.swingy.Model.HeroModel;
@@ -41,10 +41,10 @@ public class TextfileController {
             return fullData;
         } catch (FileNotFoundException e) {
             System.out.println("File not found, creating " + filename);
-            this.CreateFile(filename);}
-        // } catch (JsonSyntaxException e) {
-        //     System.out.println("The saves have been corrupted");
-        // }
+            this.CreateFile(filename);
+        } catch (JsonSyntaxException e) {
+            System.out.println("The saves have been corrupted");
+        }
         return null;
 
     }
@@ -53,7 +53,7 @@ public class TextfileController {
             Gson writer = new Gson();
             FileWriter myfile = new FileWriter(filename);
             for (HeroModel hero : heroes) {
-                myfile.append(writer.toJson(hero)); //does this need newlines?
+                myfile.append(writer.toJson(hero) + "\n");
             }
             myfile.close();
 
@@ -65,7 +65,7 @@ public class TextfileController {
         try {
             Gson writer = new Gson();
             FileWriter myfile = new FileWriter(filename, true);
-            myfile.append(writer.toJson(hero)); // + newline?
+            myfile.append(writer.toJson(hero) + "\n");
             myfile.close();
         } catch (IOException e) {
             System.out.println("An error occured");

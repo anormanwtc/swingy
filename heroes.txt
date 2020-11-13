@@ -1,0 +1,4 @@
+{"lvl":1,"exp":0,"name":"wiz","heroClass":0,"classname":["mage","warrior","rogue"],"classBaseStats":[[30,3,9],[10,9,20],[20,5,15]],"stats":[30,3,9],"items":["","",""],"itemStats":[0,0,0]}
+{"lvl":1,"exp":0,"name":"wiz","heroClass":0,"classname":["mage","warrior","rogue"],"classBaseStats":[[30,3,9],[10,9,20],[20,5,15]],"stats":[30,3,9],"items":["","",""],"itemStats":[0,0,0]}
+{"lvl":2,"exp":300,"name":"wiz","heroClass":0,"classname":["mage","warrior","rogue"],"classBaseStats":[[34,4,10],[10,9,20],[20,5,15]],"stats":[34,4,10],"items":["","",""],"itemStats":[0,0,0]}
+{"lvl":3,"exp":2800,"name":"wiz","heroClass":0,"classname":["mage","warrior","rogue"],"classBaseStats":[[34,4,10],[10,9,20],[20,5,15]],"stats":[38,5,12],"items":["","",""],"itemStats":[0,0,0]}

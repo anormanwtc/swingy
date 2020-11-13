@@ -1,5 +1,7 @@
 package org.wethinkcode.swingy.Model;
 
+import org.wethinkcode.swingy.Controller.TextfileController;
+
 public class HeroModel {
     private int lvl = 1;
     private int exp = 0;
@@ -64,7 +66,11 @@ public class HeroModel {
     }
     public String toString() {
         String heroString;
-        heroString = name + " " +  classname + " lvl: " + Integer.toString(lvl);
+        heroString = name + " " +  classname[heroClass] + " lvl: " + Integer.toString(lvl);
         return heroString;
+    }
+    public void save() {
+        TextfileController sav = new TextfileController();
+        sav.AppendNewHero(this);
     }
 }

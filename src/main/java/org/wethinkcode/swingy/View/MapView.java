@@ -45,7 +45,9 @@ public class MapView{
     }
     
     public String MoveHero(int dir) {
-        int fleePath[] = heroCoords;
+        int fleePath[] = new int[2];
+        fleePath[0] = heroCoords[0];
+        fleePath[1] = heroCoords[1];
         fullMap[heroCoords[0]][heroCoords[1]] = 2;
         if (dir == 1) {
             heroCoords[0]--; //north
@@ -67,7 +69,9 @@ public class MapView{
                 return "Fought and Won!"; }
             else  {
                 fullMap[heroCoords[0]][heroCoords[1]] = -2;
-                fullMap[fleePath[0]][fleePath[1]] = 1;
+                heroCoords[0] = fleePath[0];
+                heroCoords[1] = fleePath[1];
+                fullMap[heroCoords[0]][heroCoords[1]] = 1;
                 return "Fled successfully"; }
         }
         fullMap[heroCoords[0]][heroCoords[1]] = 1;

@@ -40,6 +40,7 @@ public class DisplayController {
         guiMenu.main();
     }
 
+    //validate by annotations
     private HeroModel ConsoleChoice(String input) {
         HeroModel selected = null;
 
@@ -52,12 +53,12 @@ public class DisplayController {
             this.Gui();
         } else if (choice == 4) {
             menu.DisplayHeros();
-        }else {
-            int i = 5;
-            for (HeroModel heroModel : heroes) {
-                if (i == choice) {
-                    selected = heroModel;}
-                i++;
+        }
+        if (choice > 4) {
+            try {
+                selected = heroes.get(choice - 4);
+            } catch(IndexOutOfBoundsException e) {
+                System.out.println("Hero " + choice + " does not exist");
             }
         }
         return selected;
@@ -70,14 +71,17 @@ public class DisplayController {
         String name = cons.readLine();
         System.out.println("Please input a your class:");
         String heroClass = cons.readLine();
-        return new HeroModel(name, heroClass);
+        HeroModel newHero = new HeroModel(name, heroClass);
+        heroes.add(newHero);
+        saves.AppendNewHero(newHero);
+        return newHero;
     }
     public void Console(String args) {
         Console cons = System.console();
         HeroModel selected = null;
         menu.DisplayMenu();
-        String input = cons.readLine();
         while (selected == null) {
+            String input = cons.readLine();
             selected = ConsoleChoice(input);
         }
         MovementController moving = new MovementController(selected);

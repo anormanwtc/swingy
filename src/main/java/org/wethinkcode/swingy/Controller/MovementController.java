@@ -4,6 +4,7 @@ import java.io.Console;
 
 import org.wethinkcode.swingy.Model.HeroModel;
 import org.wethinkcode.swingy.View.MapView;
+import java.util.List;
 
 public class MovementController {
     HeroModel hero;
@@ -21,10 +22,14 @@ public class MovementController {
         while(!dead) {
             try {
                 System.out.println("Please input the number coresponding to the direction you want");
-                System.out.println("[1,north][2,south][3,east][4,west]");
+                System.out.println("[1,north][2,south][3,east][4,west][5,exit]");
                 dir = Integer.parseInt(cons.readLine());
             } catch (NumberFormatException e) {
-                System.out.println("Only numbers for [1,north][2,south][3,east][4,west] are accepted");
+                System.out.println("Only numbers for [1,north][2,south][3,east][4,west][5,exit] are accepted");
+            }
+            if (dir == 5) {
+                hero.save();
+                return;
             }
             System.out.println(fullmap.MoveHero(dir));
             fullmap.DisplayMap();

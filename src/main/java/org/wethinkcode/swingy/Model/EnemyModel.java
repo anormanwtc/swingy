@@ -3,8 +3,6 @@ package org.wethinkcode.swingy.Model;
 import java.io.Console;
 import java.util.Random;
 
-import javax.validation.constraints.Max;
-
 public class EnemyModel {
     int lvl = 1;
     int[] stats = {5,5,20}; //Attack; Def; Hp

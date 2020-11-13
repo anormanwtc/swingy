@@ -7,16 +7,9 @@ import java.util.List;
 
 public class ConsoleView {
     List<HeroModel> heroList;
-    List<String> menuOptions = new LinkedList<String>();
+    private int numHeros = 0;
     public ConsoleView(List<HeroModel> heroes) {
         heroList = heroes;
-        menuOptions.add("new");
-        menuOptions.add("exit");
-        menuOptions.add("swap");
-        menuOptions.add("list");
-        for (HeroModel heroModel : heroes) {
-            menuOptions.add(heroModel.getName());
-        }
     }
 
     public void DisplayMenu() {
@@ -28,12 +21,11 @@ public class ConsoleView {
     }
 
     public void DisplayHeros() {
-        int i = 1;
-        for (String option : menuOptions) {
-            if (i > 4) {
-                System.out.println("[" + i + "," + option + "]");
-            }
+        System.out.println("Hero list:");
+        for (int i = 0; i < heroList.size(); i++) {
+            System.out.println("[" + (i + 4) + "," + heroList.get(i).toString() + "]");
         }
+        System.out.println("Please choose one of the options");
     }
 
     public void DisplayHeroOptions() {
