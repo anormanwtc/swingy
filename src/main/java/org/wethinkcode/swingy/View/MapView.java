@@ -1,7 +1,6 @@
 package org.wethinkcode.swingy.View;
 
 import org.wethinkcode.swingy.Model.HeroModel;
-import org.wethinkcode.swingy.Model.EnemyModel;
 import org.wethinkcode.swingy.Model.MapModel;
 
 public class MapView{
@@ -44,40 +43,30 @@ public class MapView{
         }
     }
     
-    public String MoveHero(int dir) {
-        int fleePath[] = new int[2];
-        fleePath[0] = heroCoords[0];
-        fleePath[1] = heroCoords[1];
-        fullMap[heroCoords[0]][heroCoords[1]] = 2;
-        if (dir == 1) {
-            heroCoords[0]--; //north
-        } else if (dir == 2) {
-            heroCoords[0]++; //south
-        }else if (dir == 3) {
-            heroCoords[1]++; //east
-        }else if (dir == 4) {
-            heroCoords[1]--; //west
-        }
-        if ((heroCoords[0] < 0 | heroCoords[0] >= mapsize) | (heroCoords[1] < 0 | heroCoords[1] >= mapsize)) {
-            this.RegenerateMap();
-            return "You escaped this floor";
-        }
-        if (fullMap[heroCoords[0]][heroCoords[1]] == -1 || fullMap[heroCoords[0]][heroCoords[1]] == -2) {
-            EnemyModel enemy = new EnemyModel(hero.getLvl());
-            if (enemy.fight(hero)) {
-                fullMap[heroCoords[0]][heroCoords[1]] = 1;
-                return "Fought and Won!"; }
-            else  {
-                fullMap[heroCoords[0]][heroCoords[1]] = -2;
-                heroCoords[0] = fleePath[0];
-                heroCoords[1] = fleePath[1];
-                fullMap[heroCoords[0]][heroCoords[1]] = 1;
-                return "Fled successfully"; }
-        }
-        fullMap[heroCoords[0]][heroCoords[1]] = 1;
-        return "Moved successfully";
-    }
     public int getMapsize() {
         return mapsize;
+    }
+    public int[] getHeroCoords() {
+        return heroCoords;
+    }
+    public int getDetails(int[] coords) {
+        return this.fullMap[coords[0]][coords[1]];
+    }
+    public void setHero(int[] coords) {
+        heroCoords[0] = coords[0];
+        heroCoords[1] = coords[1];
+        this.fullMap[coords[0]][coords[1]] = 1;
+    }
+    public void setCleared(int[] coords) {
+        this.fullMap[coords[0]][coords[1]] = 2;
+    }
+    public void setEmpty(int[] coords) {
+        this.fullMap[coords[0]][coords[1]] = 0;
+    }
+    public void setHiddenEnemy(int[] coords) {
+        this.fullMap[coords[0]][coords[1]] = -1;
+    }
+    public void setEnemy(int[] coords) {
+        this.fullMap[coords[0]][coords[1]] = -2;
     }
 }
