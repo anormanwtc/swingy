@@ -17,21 +17,18 @@ public class OutputController {
         Console cons = System.console();
         String line = null;
         if (ver == 1) {
-            
+            //gui stuff
         } else
             line = cons.readLine();
         return line;
     }
 
     public static void outputInfo(String info, int type) {
-        if (ver == 2) {
-            System.out.println(info);
+        if (ver == 1) {
+            //gui stuff
         }
         else {
-            if (type == 1) {
-                // use gui
-                System.out.println(info);
-            }
+            System.out.println(info);
         }
     }
 }

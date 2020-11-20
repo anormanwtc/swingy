@@ -44,10 +44,10 @@ public class DisplayController {
                 System.out.println("console selected"); }
             else {
                 System.out.println("defaulted to console"); }
-                OutputController.setVersion(2);
+            OutputController.setVersion(2);
+            heroes = saves.ReadFile();
+            this.start();
         }
-        heroes = saves.ReadFile();
-        this.start();
     }
 
     private HeroModel ConsoleChoice(String input) {
@@ -103,8 +103,8 @@ public class DisplayController {
     }
     public void start() {
         HeroModel selected = null;
-        if (OutputController.ver != 2)
-            view.DisplayMenu();
+        if (OutputController.ver != 1)  // not gui
+            view.DisplayMenu();         // console menu
         while (selected == null) {
             userInput = OutputController.getLine();
             selected = ConsoleChoice(userInput);
